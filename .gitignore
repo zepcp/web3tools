@@ -13,6 +13,8 @@ venv
 
 # PyPi Package
 dist
+build
+web3tools.egg-info
 
 # ABI Files
 abis
