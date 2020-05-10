@@ -13,3 +13,9 @@ venv
 
 # PyPi Package
 dist
+
+# ABI Files
+abis
+
+# Local Scripts
+scripts

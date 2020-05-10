@@ -1,7 +1,5 @@
 Web3Tools
 ======
-    Author:    José Pereira <zepcp@hotmail.com>
-
 **Web3Tools** is an extender for the [web3py library](https://web3py.readthedocs.io/en/stable/)
 
 
