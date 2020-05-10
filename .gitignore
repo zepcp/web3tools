@@ -1,0 +1,15 @@
+# VirtualEnv
+.env
+venv
+
+# PyCharm
+.idea
+
+# MacOs
+.DS_Store
+
+# PyCache
+*__pycache__
+
+# PyPi Package
+dist
