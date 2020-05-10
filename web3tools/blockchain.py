@@ -17,7 +17,7 @@ from web3.types import BlockData, TxReceipt, Nonce, TxData, BlockNumber, Wei, \
 
 
 class Providers(Enum):
-    INFURA_MAIN = "https://mainnet.infura.io/v3/{}"
+    INFURA_MAINNET = "https://mainnet.infura.io/v3/{}"
     INFURA_ROPSTEN = "https://ropsten.infura.io/v3/{}"
     GETH = "https://{}:8545"
 

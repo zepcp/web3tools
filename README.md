@@ -6,7 +6,7 @@ Web3Tools
 Usage - Basic Tools
 ----------
 
-    from tools import Utils
+    from web3tools import Utils
 
 Create an ethereum account
 
@@ -27,7 +27,7 @@ Sign a message & Recover signer's address
 Usage - Ewt
 ----------
 
-    from tools import Ewt
+    from web3tools import Ewt
     ewt = Ewt(expiration=30)
 
 Ewt Authentication, similar to [jwt](https://jwt.io/) but using the ethereum encryption keys
@@ -39,7 +39,7 @@ Ewt Authentication, similar to [jwt](https://jwt.io/) but using the ethereum enc
 Usage - Blockchain Reader
 ----------
 
-    from tools import Reader
+    from web3tools import Reader
     reader = Reader(Providers.INFURA_MAINNET.value.format("myInfuraKey"))
 
 Crawl blockchain
@@ -66,7 +66,7 @@ Read Contracts
 Usage - Launch Transactions
 ----------
 
-    from tools import Provider, Transactor
+    from web3tools import Provider, Transactor
     transactor = Transactor(Providers.INFURA_MAINNET.value.format("myInfuraKey"))
 
 Send *1 Eth* to *receiverAddress*
