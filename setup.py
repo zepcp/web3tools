@@ -1,7 +1,7 @@
 """
 # Upload Package: https://pypi.org/project/web3tools/
 python3 setup.py sdist bdist_wheel
-twine upload dist/web3tools-0.0.2*
+twine upload dist/web3tools-0.0.4*
 """
 import setuptools
 
@@ -10,7 +10,7 @@ with open("README.md", "r") as fh:
 
 setuptools.setup(
     name="web3tools",
-    version="0.0.2",
+    version="0.0.4",
     author="José Pereira",
     author_email="zepcp@hotmail.com",
     description="Web3Py Extender Tools",

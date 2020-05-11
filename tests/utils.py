@@ -1,12 +1,11 @@
 import unittest
-from time import sleep
 
 from web3 import Web3
 
-from web3tools import Utils, Ewt
+from web3tools import Utils
 
 
-utils, ewt = Utils(), Ewt(expiration=1)
+utils = Utils()
 
 
 class TestUtils(unittest.TestCase):
@@ -36,15 +35,3 @@ class TestUtils(unittest.TestCase):
                          address)
         self.assertEqual(utils.recover_message(signed_message,  "message"),
                          address)
-
-
-class TestEwt(unittest.TestCase):
-    def test_ewt(self):
-        address, key = utils.create()
-        token = ewt.generate(key)
-        header, payload, sig = token.split(".")
-        self.assertEqual(ewt.urldecode(header), {"typ": "EWT"})
-        self.assertEqual(ewt.urldecode(header), {'typ': 'EWT'})
-        self.assertEqual(ewt.validate(token), True)
-        sleep(1)
-        self.assertEqual(ewt.validate(token), False)
