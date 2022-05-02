@@ -3,17 +3,17 @@
 
 ## Upload PyPi package
 
-vi ~/.pypirc
+Setup your PyPi credentials on `~/.pypirc`
 
     [pypi]
       username = __token__
       password = pypi-token
 
-### Generate tar.gz and whl within your project
+Accordingly with the setuptools on `setup.py` generate a new package for a given project and version. Two files (`tar.gz` and `whl`) will be added to `dist/`
 
     python setup.py sdist bdist_wheel
 
-### Upload To PyPi
+Upload the packages within `dist/` to PyPi
 
     pip install twine
     twine upload dist/*
@@ -77,7 +77,7 @@ Read Contracts
 
 ### Launch Transactions
 
-    from web3tools import Provider, Transactor
+    from web3tools import Providers, Transactor
     transactor = Transactor(Providers.INFURA_MAINNET.value.format("myInfuraKey"))
 
 Send *1 Eth* to *receiverAddress*
