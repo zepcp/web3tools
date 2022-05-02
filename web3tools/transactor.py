@@ -13,20 +13,20 @@ class Transactor(Reader):
         super().__init__(provider, timeout)
 
     def launch_transaction(self, private_key: Union[HexStr, str],
-                           to: Union[Address, str], amount: Wei,
+                           to: Union[Address, str], value: Wei = 0,
                            max_price: Wei = None, nonce: int = None) -> HexStr:
         sender = self.get_address(private_key)
-        params = self.get_params(sender, max_price, nonce)
-        transaction = {**params, "to": self.to_checksum(to), "value": amount}
+        params = self.get_params(sender, max_price, nonce, value)
+        transaction = {**params, "to": self.to_checksum(to)}
         transaction["gas"] = self.web3.eth.estimateGas(transaction)
         return self.send_raw(private_key, transaction)
 
     def launch_function(self, instance: Contract,
                         private_key: Union[HexStr, str], function_name: str,
-                        *args: Any, max_price: Wei = None, nonce: int = None
-                        ) -> HexStr:
+                        *args: Any, value: Wei = 0, max_price: Wei = None,
+                        nonce: int = None) -> HexStr:
         sender = self.get_address(private_key)
-        params = self.get_params(sender, max_price, nonce)
+        params = self.get_params(sender, max_price, nonce, value)
         transaction = instance.functions.__dict__[function_name](
             *args).buildTransaction(params)
         return self.send_raw(private_key, transaction)

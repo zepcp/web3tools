@@ -45,7 +45,7 @@ class Utils:
         return Web3.toText(hexstr=hexstr) if hexstr else Web3.toText(hexbytes)
 
     @staticmethod
-    def create() -> Tuple(ChecksumAddress, HexStr):
+    def create() -> Tuple[ChecksumAddress, HexStr]:
         account = Account.create()
         return account.address, Web3.toHex(account.key)
 

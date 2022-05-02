@@ -1,10 +1,26 @@
-Web3Tools
-======
+# Web3Tools
 **Web3Tools** is an extender for the [web3py library](https://web3py.readthedocs.io/en/stable/)
 
+## Upload PyPi package
 
-Usage - Basic Tools
-----------
+vi ~/.pypirc
+
+    [pypi]
+      username = __token__
+      password = pypi-token
+
+### Generate tar.gz and whl within your project
+
+    python setup.py sdist bdist_wheel
+
+### Upload To PyPi
+
+    pip install twine
+    twine upload dist/*
+
+## Usage
+
+### Basic Tools
 
     from web3tools import Utils
 
@@ -23,9 +39,7 @@ Sign a message & Recover signer's address
     signature = Utils.sign_message("myPrivateKey", "myMessage")
     address = Utils.recover_message(signature, "myMessage")
 
-
-Usage - Ewt
-----------
+### Ewt
 
     from web3tools import Ewt
     ewt = Ewt(expiration=30)
@@ -35,9 +49,7 @@ Ewt Authentication, similar to [jwt](https://jwt.io/) but using the ethereum enc
     ewt_token = ewt.generate("myPrivateKey")
     is_valid = ewt.validate(ewt_token)
 
-
-Usage - Blockchain Reader
-----------
+### Blockchain Reader
 
     from web3tools import Reader
     reader = Reader(Providers.INFURA_MAINNET.value.format("myInfuraKey"))
@@ -63,8 +75,7 @@ Read Contracts
     events_on_transaction = reader.find_event_receipt(contract, "eventName", "myTxid")
 
 
-Usage - Launch Transactions
-----------
+### Launch Transactions
 
     from web3tools import Provider, Transactor
     transactor = Transactor(Providers.INFURA_MAINNET.value.format("myInfuraKey"))

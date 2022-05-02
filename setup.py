@@ -10,7 +10,7 @@ with open("README.md", "r") as fh:
 
 setuptools.setup(
     name="web3tools",
-    version="0.0.5",
+    version="0.0.7",
     author="José Pereira",
     author_email="zepcp@hotmail.com",
     description="Web3Py Extender Tools",
