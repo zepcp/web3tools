@@ -2,7 +2,7 @@
 from os import PathLike
 from random import choices
 from string import ascii_letters, digits
-from typing import Union, Dict
+from typing import Union, Dict, Tuple
 
 from eth_account import Account, messages
 from eth_typing import URI
@@ -45,7 +45,7 @@ class Utils:
         return Web3.toText(hexstr=hexstr) if hexstr else Web3.toText(hexbytes)
 
     @staticmethod
-    def create() -> (ChecksumAddress, HexStr):
+    def create() -> Tuple(ChecksumAddress, HexStr):
         account = Account.create()
         return account.address, Web3.toHex(account.key)
 

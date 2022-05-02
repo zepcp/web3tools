@@ -37,11 +37,14 @@ class Reader(Utils):
         return max_price
 
     def get_params(self, sender: Union[Address, ChecksumAddress, str],
-                   max_price: Wei = None, nonce: int = None) -> TxParams:
-        return {"from": self.to_checksum(sender),
-                "chainId": self.web3.eth.chainId,
-                "gasPrice": self.get_gas_price(max_price=max_price),
-                "nonce": self.get_nonce(sender) if not nonce else nonce}
+                   max_price: Wei = None, nonce: int = None, value: int = 0) -> TxParams:
+        return {
+            "from": self.to_checksum(sender),
+            "chainId": self.web3.eth.chainId,
+            "gasPrice": self.get_gas_price(max_price=max_price),
+            "nonce": self.get_nonce(sender) if not nonce else nonce,
+            "value": value,
+        }
 
     def get_contract_instance(self, abi: str, address: Union[Address, str]
                               ) -> Contract:
