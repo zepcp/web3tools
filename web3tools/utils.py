@@ -25,7 +25,7 @@ class Utils:
         return Web3.toWei(amount, unit)
 
     @staticmethod
-    def from_wei(amount: float, unit: str = "ether") -> Wei:
+    def from_wei(amount: Wei, unit: str = "ether") -> float:
         return Web3.fromWei(amount, unit)
 
     @staticmethod

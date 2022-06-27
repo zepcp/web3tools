@@ -42,7 +42,7 @@ Sign a message & Recover signer's address
 ### Ewt
 
     from web3tools import Ewt
-    ewt = Ewt(expiration=30)
+    ewt = Ewt()
 
 Ewt Authentication, similar to [jwt](https://jwt.io/) but using the ethereum encryption keys
 

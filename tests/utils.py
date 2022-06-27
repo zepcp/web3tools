@@ -26,12 +26,17 @@ class TestUtils(unittest.TestCase):
 
     def test_signatures(self):
         address, key = utils.create()
-        transaction = {"from": address, "chainId": 3, "gas": 1,
-                       "gasPrice": 1, "nonce": 1, "to": address, "value": 1}
+        transaction = {
+            "from": address,
+            "chainId": 3,
+            "gas": 1,
+            "gasPrice": 1,
+            "nonce": 1,
+            "to": address,
+            "value": 1,
+        }
         signed_transaction = utils.sign_transaction(key, transaction)
         signed_message = utils.sign_message(key, "message")
 
-        self.assertEqual(utils.recover_transaction(signed_transaction),
-                         address)
-        self.assertEqual(utils.recover_message(signed_message,  "message"),
-                         address)
+        self.assertEqual(utils.recover_transaction(signed_transaction), address)
+        self.assertEqual(utils.recover_message(signed_message, "message"), address)

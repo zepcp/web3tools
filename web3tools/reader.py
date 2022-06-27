@@ -3,8 +3,19 @@ from typing import Union, Dict, Tuple, Any
 
 from eth_typing import URI
 from web3.contract import Contract
-from web3.types import BlockData, TxReceipt, Nonce, TxData, BlockNumber, Wei, \
-    Address, ChecksumAddress, HexStr, TxParams, EventData
+from web3.types import (
+    BlockData,
+    TxReceipt,
+    Nonce,
+    TxData,
+    BlockNumber,
+    Wei,
+    Address,
+    ChecksumAddress,
+    HexStr,
+    TxParams,
+    EventData,
+)
 
 from .utils import Utils
 
@@ -36,8 +47,13 @@ class Reader(Utils):
             return self.web3.eth.gasPrice
         return max_price
 
-    def get_params(self, sender: Union[Address, ChecksumAddress, str],
-                   max_price: Wei = None, nonce: int = None, value: int = 0) -> TxParams:
+    def get_params(
+        self,
+        sender: Union[Address, ChecksumAddress, str],
+        max_price: Wei = None,
+        nonce: int = None,
+        value: int = 0,
+    ) -> TxParams:
         return {
             "from": self.to_checksum(sender),
             "chainId": self.web3.eth.chainId,
@@ -46,23 +62,29 @@ class Reader(Utils):
             "value": value,
         }
 
-    def get_contract_instance(self, abi: str, address: Union[Address, str]
-                              ) -> Contract:
-        return self.web3.eth.contract(address=self.to_checksum(address),
-                                      abi=abi)
+    def get_contract_instance(self, abi: str, address: Union[Address, str]) -> Contract:
+        return self.web3.eth.contract(address=self.to_checksum(address), abi=abi)
 
     def call_view(self, instance: Contract, function_name: str, *args: Any):
         if not args:
             return instance.functions.__dict__[function_name]().call()
         return instance.functions.__dict__[function_name](*args).call()
 
-    def find_event_receipt(self, instance: Contract, event_name: str,
-                           txid: Union[HexStr, str]) -> Tuple[EventData]:
+    def find_event_receipt(
+        self, instance: Contract, event_name: str, txid: Union[HexStr, str]
+    ) -> Tuple[EventData]:
         return instance.events.__dict__[event_name]().processReceipt(
-            self.get_receipt(txid))
+            self.get_receipt(txid)
+        )
 
-    def find_events(self, instance: Contract, event_name: str,
-                    from_block: int = 0, to_block: int = "latest",
-                    filters: Dict = None) -> Tuple[EventData]:
+    def find_events(
+        self,
+        instance: Contract,
+        event_name: str,
+        from_block: int = 0,
+        to_block: int = "latest",
+        filters: Dict = None,
+    ) -> Tuple[EventData]:
         return instance.events.__dict__[event_name].getLogs(
-            fromBlock=from_block, toBlock=to_block, argument_filters=filters)
+            fromBlock=from_block, toBlock=to_block, argument_filters=filters
+        )

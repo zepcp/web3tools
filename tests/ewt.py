@@ -3,7 +3,7 @@ from time import sleep
 
 from web3tools import Ewt
 
-ewt = Ewt(expiration=1)
+ewt = Ewt()
 
 
 class TestEwt(unittest.TestCase):
